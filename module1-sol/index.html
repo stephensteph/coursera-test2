@@ -6,26 +6,41 @@
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <style>
       .message { font-size: 1.3em; font-weight: bold; }
+      p{ font-weight: bold; color: red;}
     </style>
-    <script src = "angular.js"></script>
-    <script src = "app.js"></script>
-  </head>
-<body>
-   <div class="container">
-     <h1>Lunch Checker</h1>
 
+  </head>
+  <body ng-app="lunchChecker">
+  <div class="container">
+
+     <h1>Lunch Checker</h1>
+     <div ng-controller="LunchCheckerController">
          <div class="form-group">
-             <input id="lunch-menu" type="text"
+             <input id="lunch-menu" type="text" ng-model="lunchContent"
              placeholder="list comma separated dishes you usually have for lunch"
              class="form-control">
+             <p ng-show="hasError"> {{ errorMsg }}</p>
+         </div>
+         <div class="alert alert-info" ng-if="emptyItems">
+           <strong>Note! </strong>Please I do not consider an empty item!
          </div>
          <div class="form-group">
-             <button class="btn btn-default">Check If Too Much</button>
+             <button class="btn btn-default" ng-click="TextChecker($event)">Check If Too Much</button>
          </div>
-         <div class="form-group message">
-           <!-- Your message can go here. -->
+         <div class="form-group message" ng-hide="stats==0">
+             <div class="alert alert-success" ng-show="stats== 1">
+               Enjoy!
+             </div>
+             <div class="alert alert-warning" ng-show="stats== 2">
+               Too Much!
+             </div>
          </div>
+      </div>
    </div>
 
+
+
+   <script src = "angular.js"></script>
+   <script src = "app.js"></script>
 </body>
 </html>
