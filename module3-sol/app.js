@@ -18,7 +18,7 @@ function FoundItemsDirective() {
     controller: NarrowItDownController,
     controllerAs: 'narrow',
     bindToController: true,
-    templateUrl: 'templates/founditems.html',
+    templateUrl: 'founditems.html',
     transclude: true
   };
 }
